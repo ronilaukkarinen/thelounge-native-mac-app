@@ -1,8 +1,13 @@
+<h1 align="center">
+	<img
+		width="300"
+		alt="The Lounge"
+		src="https://raw.githubusercontent.com/thelounge/thelounge/master/client/img/logo-vertical-transparent-bg.svg?sanitize=true">
+</h1>
+
 # The Lounge - Native macOS app
 
-[![Built with Swift](https://img.shields.io/badge/Built_with-Swift-orange?style=for-the-badge)](https://swift.org)
-[![macOS Tahoe](https://img.shields.io/badge/macOS-Tahoe_26+-blue?style=for-the-badge)](https://www.apple.com/macos/)
-[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
+![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
 
 A native macOS wrapper for [The Lounge](https://thelounge.chat/) IRC client with native notifications, customizable appearance, and full macOS integration.
 
