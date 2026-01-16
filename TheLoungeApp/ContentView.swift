@@ -5,7 +5,7 @@ struct ContentView: View {
     private let titlebarHeight: CGFloat = 28
 
     var body: some View {
-        WebView(url: URL(string: "https://irc.pulina.fi")!)
+        WebView(url: SettingsManager.shared.getServerURL())
             .padding(.top, titlebarHeight)
             .ignoresSafeArea()
     }

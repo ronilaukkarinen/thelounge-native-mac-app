@@ -4,6 +4,13 @@ import UserNotifications
 class SettingsManager: ObservableObject {
     static let shared = SettingsManager()
 
+    @Published var serverURL: String {
+        didSet {
+            UserDefaults.standard.set(serverURL, forKey: "serverURL")
+            NotificationCenter.default.post(name: .serverURLChanged, object: nil)
+        }
+    }
+
     @Published var titlebarColor: Color {
         didSet {
             saveTitlebarColor()
@@ -24,6 +31,9 @@ class SettingsManager: ObservableObject {
     }
 
     init() {
+        // Load server URL
+        self.serverURL = UserDefaults.standard.string(forKey: "serverURL") ?? "https://irc.pulina.fi"
+
         // Load titlebar color
         if let colorData = UserDefaults.standard.data(forKey: "titlebarColor"),
            let nsColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSColor.self, from: colorData) {
@@ -47,10 +57,15 @@ class SettingsManager: ObservableObject {
     func getNSColor() -> NSColor {
         return NSColor(titlebarColor)
     }
+
+    func getServerURL() -> URL {
+        return URL(string: serverURL) ?? URL(string: "https://irc.pulina.fi")!
+    }
 }
 
 extension Notification.Name {
     static let titlebarColorChanged = Notification.Name("titlebarColorChanged")
+    static let serverURLChanged = Notification.Name("serverURLChanged")
 }
 
 struct SettingsView: View {
@@ -59,6 +74,25 @@ struct SettingsView: View {
 
     var body: some View {
         TabView {
+            // General Tab
+            Form {
+                Section {
+                    TextField("Server URL", text: $settings.serverURL)
+                        .textFieldStyle(.roundedBorder)
+                        .padding(.vertical, 4)
+
+                    Text("Enter the full URL of your The Lounge instance. Restart the app after changing.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                } header: {
+                    Text("Server")
+                }
+            }
+            .formStyle(.grouped)
+            .tabItem {
+                Label("General", systemImage: "gear")
+            }
+
             // Appearance Tab
             Form {
                 Section {
