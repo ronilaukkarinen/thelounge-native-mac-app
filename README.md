@@ -12,6 +12,8 @@
 	<img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white">
 </div>
 
+<img width="1441" height="1142" alt="image" src="https://github.com/user-attachments/assets/1be08f10-97af-4183-978b-fdaeee69a998" />
+
 ## Overview
 
 A native macOS wrapper for [The Lounge](https://thelounge.chat/) IRC client with native notifications, customizable appearance, and full macOS integration. Looking for Linux version? Check out [thelounge-native-linux-app](https://github.com/ronilaukkarinen/thelounge-native-linux-app).
